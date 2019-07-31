@@ -1,0 +1,84 @@
+<div class="row container">
+  <form #form="ngForm" (ngSubmit)="enviarMensagem(form)" class="col s12">
+    <h5>Cadastrar Mensagens</h5>
+    <div class="row">
+        <div class="input-field col s11">
+          <i class="material-icons prefix">account_circle</i>
+          <input [(ngModel)]="obj.nome" 
+                 id="icon_prefix" 
+                 type="text" 
+                 class="validate" 
+                 name="nome"
+                 maxlength="50"
+                 required >
+          <label for="icon_prefix">Nome:</label>
+        </div>
+      </div>
+
+      <div class="row">
+          <div class="input-field col s11">
+            <i class="material-icons prefix ">mail_outline</i>
+            <input [(ngModel)]="obj.email"
+                   id="icon_email" 
+                   type="text" 
+                   class="validate" 
+                   name="email"
+                   maxlength="50"
+                   riquired >
+            <label for="icon_email">E-mail:</label>
+          </div>
+      </div>
+      
+      <div class="row">
+        <div class="input-field col s11">
+          <i class="material-icons prefix">phone</i>
+          <input [(ngModel)]="obj.telefone"
+                 id="icon_telephone" 
+                 type="text" 
+                 class="validate" 
+                 name="telefone"
+                 maxlength="15"
+                 mask="(00)00000-0000"
+                 riquired >
+          <label for="icon_telephone">Celular:</label>
+        </div>
+      </div>
+
+      <div class="row col s12">
+         
+          <label for="assunto">Assunto:</label><br>
+          <select class="col s11 browser-default" id="assunto" [(ngModel)]="obj.assunto" name="assunto" id="assunto" required>
+              <!--<option [ngValue]="" disabled>Selecione um assunto</option>-->
+              <option  *ngFor="let assunto of resultado" [ngValue]="assunto.nome">{{assunto.nome}}</option>
+          </select>  
+      </div>  
+
+      <div class="row">
+        <div class="input-field col s11">
+          <i class="material-icons prefix">mode_edit</i>
+          <textarea [(ngModel)]="obj.mensagem" 
+                    name="mensagem" 
+                    id="textarea2" 
+                    class="materialize-textarea"
+                    maxlength="500" 
+                    data-length="500"
+                    required >
+          </textarea>
+          <label for="textarea2">Textarea</label>
+          
+          <button [disabled]="!form.form.valid"
+          class="btn waves-effect waves-light right" 
+          type="submit"  
+          name="action">Enviar
+          <i class="material-icons right">send</i>
+      </button>
+
+
+        </div>
+
+        
+      </div>
+
+  </form>
+</div>
+
